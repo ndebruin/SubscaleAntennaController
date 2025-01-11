@@ -1,18 +1,19 @@
 #include <Arduino.h>
+#include <Alfredo_NoU2.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include "JoystickSensor.hpp"
+
+JoystickSensor positionSensor = JoystickSensor();
+
+
+
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  positionSensor.begin();
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  positionSensor.update();
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
 }
