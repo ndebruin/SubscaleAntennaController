@@ -3,10 +3,7 @@
 
 #include <Arduino.h>
 
-struct AnglePose{
-    double theta;
-    double phi;
-};
+#include "Constants.h"
 
 class PositionalSensor
 {
