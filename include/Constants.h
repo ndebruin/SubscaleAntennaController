@@ -11,6 +11,12 @@ struct AnglePose{
 // x, y, z
 using Coord3d = BLA::Matrix<3>;
 
+struct CableLengths{
+    double cable1;
+    double cable2;
+    double cable3;
+};
+
 ////////////////////////////////////////////////////////////////////// Positional Sensor //////////////////////////////////////////////////////////////////////
 
 #define xAxisPin 5
@@ -41,6 +47,16 @@ constexpr double yAxisScalar = ((double)(yAxisMax - yAxisMin) / (double)(yAxisMa
 #define actuator2Channel 2
 #define actuator3Channel 3
 
+#define minAngle 0.0 // degrees
+#define minPulse 500 // microseconds
+
+#define maxAngle 270.0 // degrees
+#define maxPulse 2500 // microseconds
+
+#define channel1Default // microseconds
+#define channel2Default // microseconds
+#define channel3Default // microseconds
+
 
 
 ////////////////////////////////////////////////////////////////////// Geometric Measurements //////////////////////////////////////////////////////////////////////
@@ -65,18 +81,23 @@ constexpr double yAxisScalar = ((double)(yAxisMax - yAxisMin) / (double)(yAxisMa
 #define Beta2 2 * PI / 3
 #define Beta3 4 * PI / 3
 
+#define servoPulleyRadius 8.5 // mm
+
 // we are placing our origin for the 'global' frame (that being the frame of the overall dish) at the rotation point
 
 Coord3d pulleyPoint1 = {pulleyRadius * cos(Beta1), pulleyRadius * sin(Beta1), pulleyHeight};
 Coord3d pulleyPoint2 = {pulleyRadius * cos(Beta2), pulleyRadius * sin(Beta2), pulleyHeight};
 Coord3d pulleyPoint3 = {pulleyRadius * cos(Beta3), pulleyRadius * sin(Beta3), pulleyHeight};
 
-// note that while these are effectively in the 'body' frame (that being the frame of the horn)
+// note that while these are in the 'body' frame (that being the frame of the horn)
 // while they conveniently are also the coordinates in the global frame in the case where the horn is pointing straight down ('home' position), this is not always the case
 Coord3d attachmentPoint1 = {attachmentRadius * cos(Beta1), attachmentRadius * sin(Beta1), -feedPointDistance};
 Coord3d attachmentPoint2 = {attachmentRadius * cos(Beta2), attachmentRadius * sin(Beta2), -feedPointDistance};
 Coord3d attachmentPoint3 = {attachmentRadius * cos(Beta3), attachmentRadius * sin(Beta3), -feedPointDistance};
 
+#define defaultLength1
+#define defaultLength2
+#define defaultLength3
  
 
 #endif // CONSTANTS_h
